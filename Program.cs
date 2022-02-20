@@ -10,22 +10,44 @@ namespace Logical
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Welocome to Logical Programs");
-            Console.Write("Enter last number of the series: ");
-            //VARIABLES
-            int lastNumber = Convert.ToInt32(Console.ReadLine());
-            int j = 1;
-            int i = 0;
-            int k = 0;
-
-            Console.Write(i + " " + j + " ");
-            while (k < lastNumber - i)
-            {
-                k = j + i;
-                Console.Write(k + " ");
-                i = j;
-                j = k;
-            }
+            Console.WriteLine("coupon numbers");
+            Console.WriteLine("enter number:");
+            int number = Convert.ToInt32(Console.ReadLine());
+            GetRandom(number);
         }
+
+        public static void GetRandom(int number)
+        {
+            int[] Array = new int[number];
+            int count = 0;
+            for (int i = 0; i < number; i++)
+            {
+                bool same = false;
+                Random random = new Random();
+                int randomNum = random.Next(100, 999);
+
+                foreach (int num in Array)
+                {
+                    if (num == randomNum)
+                    {
+                        same = true;
+                        break;
+                    }
+
+                }
+                if (same == true && i > 0)
+                {
+                    i--;
+                }
+                else
+                {
+                    Array[i] = randomNum;
+                }
+                count++;
+            }
+            Console.WriteLine($"total number of iterations: {count}");
+            Console.WriteLine(String.Join(" ", Array));
+        }
+
     }
 }
