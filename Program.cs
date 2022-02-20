@@ -10,22 +10,25 @@ namespace Logical
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("prime number");
-            Console.WriteLine("enter number: ");
-            bool isPrime = true;
-            int number = Convert.ToInt32(Console.ReadLine());
-            int maxLimit = (number / 2) + 1;
-            for (int i = 2; i < maxLimit; i++)
+            Console.WriteLine("reverse number");
+            int Number = Convert.ToInt32(Console.ReadLine());
+            int remainder = Number;
+            int tenth = 1;
+            int reverse = 0;
+            while (remainder > 10)
             {
-                int remainder = number % i;
-                if (remainder == 0)
-                {
-                    isPrime = false;
-                    break;
-                }
+                remainder = remainder / 10;
+                tenth *= 10;
             }
-            string result = isPrime ? "a prime" : "not a prime";
-            Console.WriteLine($"{number} is {result}");
+            remainder = Number;
+            while (remainder > 0)
+            {
+                int digit = remainder % 10;
+                remainder = remainder / 10;
+                reverse += digit * tenth;
+                tenth /= 10;
+            }
+            Console.WriteLine(reverse);
         }
     }
 }
