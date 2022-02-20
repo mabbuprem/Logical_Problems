@@ -10,19 +10,31 @@ namespace Logical
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("stopwatch");
-            var stopwatch = new Stopwatch();
+            Console.WriteLine("temperature conversion");
+            Console.WriteLine("enter 1: Celsius to Fahrenheit    2: Fahrenheit to Celsius");
+            int option = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("enter temperature");
+            int temp = Convert.ToInt32(Console.ReadLine());
 
-            Console.WriteLine("press enter to start");
-            Console.ReadLine();
-            stopwatch.Start();
+            GetTemp(option, temp);
+        }
+        public static void GetTemp(int option, int temp)
+        {
 
-            Console.WriteLine("press enter to stop");
-            Console.ReadLine();
-            stopwatch.Stop();
-
-            var elapsed_time = stopwatch.ElapsedMilliseconds;
-            Console.WriteLine($"{elapsed_time / 1000} seconds");
+            switch (option)
+            {
+                case 1:
+                    int F = (temp * 9 / 5) + 32;
+                    Console.WriteLine($"{F} fahrenheit");
+                    break;
+                case 2:
+                    int C = (temp - 32) * 5 / 9;
+                    Console.WriteLine($"{C} celsius");
+                    break;
+                default:
+                    Console.WriteLine("invalid input");
+                    break;
+            }
         }
     }
 }
