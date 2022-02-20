@@ -10,21 +10,22 @@ namespace Logical
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("perfect number");
+            Console.WriteLine("prime number");
             Console.WriteLine("enter number: ");
+            bool isPrime = true;
             int number = Convert.ToInt32(Console.ReadLine());
             int maxLimit = (number / 2) + 1;
-            int sum = 0;
-            for (int i = 1; i < maxLimit; i++)
+            for (int i = 2; i < maxLimit; i++)
             {
-                if (number % i == 0)
+                int remainder = number % i;
+                if (remainder == 0)
                 {
-                    sum += i;
+                    isPrime = false;
+                    break;
                 }
             }
-            string result = number == sum ? "a" : "not a";
-            Console.WriteLine($"{number} is {result} perfect number");
-
+            string result = isPrime ? "a prime" : "not a prime";
+            Console.WriteLine($"{number} is {result}");
         }
     }
- }
+}
