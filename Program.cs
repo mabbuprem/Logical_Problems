@@ -10,25 +10,19 @@ namespace Logical
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("reverse number");
-            int Number = Convert.ToInt32(Console.ReadLine());
-            int remainder = Number;
-            int tenth = 1;
-            int reverse = 0;
-            while (remainder > 10)
+            Console.WriteLine("calculate square root using newtons method");
+            Console.WriteLine("enter number");
+            double number = Convert.ToDouble(Console.ReadLine());
+            GetRoot(number);
+        }
+        public static void GetRoot(double number)
+        {
+            double answer = number;
+            while ((Math.Abs(answer - number / answer)) > (1e-15 * answer))
             {
-                remainder = remainder / 10;
-                tenth *= 10;
+                answer = (answer + (number / answer)) / 2;
             }
-            remainder = Number;
-            while (remainder > 0)
-            {
-                int digit = remainder % 10;
-                remainder = remainder / 10;
-                reverse += digit * tenth;
-                tenth /= 10;
-            }
-            Console.WriteLine(reverse);
+            Console.WriteLine(answer);
         }
     }
 }
